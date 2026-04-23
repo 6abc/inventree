@@ -1,0 +1,34 @@
+<!-- templates/accounts/login.html -->
+{% extends 'base.html' %}
+
+{% block title %}APP - Add Location{% endblock %}
+
+{% block content %}
+<main class="container py-4">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <h4 class="mb-4 text-center">📍 Add Location</h4>
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'add_item' %}" class="btn btn-secondary">Back</a>
+                            <button type="submit" class="btn btn-primary">Save Location</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+{% endblock %}

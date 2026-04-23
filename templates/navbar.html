@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'home' %}">
+        <i class="bi bi-shield-lock"></i> Auth System
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <i class="bi bi-house"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'item_list' %}">
+                        <i class="bi bi-ui-checks"></i> APP
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'password_change' %}">
+                        <i class="bi bi-key"></i> Change Password
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">
+                        <i class="bi bi-person-circle"></i> {{ user.username }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">
+                        <i class="bi bi-box-arrow-in-right"></i> Login
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">
+                        <i class="bi bi-person-plus"></i> Register
+                    </a>
+                </li>
+            {% endif %}
+
+            <!-- 🌙 Theme Toggle Button -->
+            <li class="nav-item ms-2">
+                <button id="themeToggle" class="theme-toggle-btn" title="Toggle theme">
+                    <i class="bi bi-moon-stars" id="themeIcon"></i>
+                </button>
+            </li>
+        </ul>
+      </div>
+    </div>
+</nav>
