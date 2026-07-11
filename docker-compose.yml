@@ -4,7 +4,9 @@ services:
   web:
     build: .
     container_name: inventory_web
-    command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
+    security_opt:
+      - apparmor:unconfined
+    command: gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3 --threads 2 --timeout 120
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
@@ -12,7 +14,7 @@ services:
     env_file:
       - .env
     ports:
-      - "8000:8000"   # 👈 important (expose to host)
+      - "11000:8000"   # 👈 important (expose to host)
     restart: unless-stopped
 
 volumes:
